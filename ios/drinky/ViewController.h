@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DBCameraViewController.h"
+#import "CustomCamera.h"
 #import "DrunkDetector.h"
 
 @interface ViewController : UIViewController
 {
     DBCameraViewController *_cameraController;
+    CustomCamera *camera;
 }
 @end
 

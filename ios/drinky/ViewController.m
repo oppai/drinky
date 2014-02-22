@@ -10,6 +10,7 @@
 #import "CustomCamera.h"
 
 @interface ViewController ()<DBCameraViewControllerDelegate>
+- (void)detectFace:(NSTimer*)timer;
 @end
 
 @implementation ViewController
@@ -18,10 +19,46 @@
 {
     [super viewDidLoad];
     
-    CustomCamera *camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
+    camera = [CustomCamera initWithFrame:[[UIScreen mainScreen] bounds]];
     [camera buildIntarface];
     
     _cameraController = [[DBCameraViewController alloc] initWithDelegate:self cameraView:camera];
+
+    [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                   selector:@selector(detectFace:)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+- (void)detectFace:(NSTimer*)timer
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            // TODO:諦めない
+            UIView *preview = [[UIView alloc] initWithFrame:[camera.previewLayer frame]];
+            [preview.layer insertSublayer:camera.layer atIndex:0];
+            UIImage *image = [self convert:preview];
+
+            DrunkDetector *beer = [[DrunkDetector alloc] init];
+            [beer calcDrunkess:image];
+        });
+    });
+}
+
+- (UIImage*)convert:(UIView*)sourceView
+{
+    sourceView.layer.borderWidth = 1.0f;
+    sourceView.layer.borderColor = [UIColor blackColor].CGColor;
+    sourceView.layer.backgroundColor = [UIColor redColor].CGColor;
+    sourceView.layer.cornerRadius = 4.0f;
+    
+    // UIView を変換して UIView（resultImage）を取得
+    UIGraphicsBeginImageContext(sourceView.frame.size);
+    [sourceView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,8 +81,6 @@
 
 - (void) captureImageDidFinish:(UIImage *)image
 {
-    DrunkDetector *beer = [[DrunkDetector alloc] init];
-    [beer calcDrunkess:image];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];

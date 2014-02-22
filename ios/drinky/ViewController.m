@@ -161,6 +161,11 @@
     [_editorController dismissViewControllerAnimated:YES
                                           completion:nil];
     [self.navigationController popViewControllerAnimated:NO];
+    
+    DetailViewController *detail = [[DetailViewController alloc] init];
+    [detail setDetailImage:image];
+    [self.navigationController pushViewController:detail animated:NO];
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)photoEditorCanceled:(AFPhotoEditorController *)editor

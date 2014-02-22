@@ -21,7 +21,7 @@ enum {
 
 @interface DrunkDetector : NSObject
 {
-    CIDetector *faceDetector;
+    CIDetector *faceHighDetector,*faceLowDetector;
 }
-- (CGFloat)calcDrunkess:(UIImage *)image;
+- (NSArray *)calcDrunkess:(UIImage *)image;
 @end

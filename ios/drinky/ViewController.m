@@ -36,12 +36,12 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
         dispatch_sync(dispatch_get_main_queue(), ^{
             // TODO:諦めない
-            UIView *preview = [[UIView alloc] initWithFrame:[camera.previewLayer frame]];
-            [preview.layer insertSublayer:camera.layer atIndex:0];
-            UIImage *image = [self convert:preview];
-
-            DrunkDetector *beer = [[DrunkDetector alloc] init];
-            [beer calcDrunkess:image];
+//            UIView *preview = [[UIView alloc] initWithFrame:[camera.previewLayer frame]];
+//            [preview.layer insertSublayer:camera.layer atIndex:0];
+//            UIImage *image = [self convert:preview];
+//
+//            DrunkDetector *beer = [[DrunkDetector alloc] init];
+//            [beer calcDrunkess:image];
         });
     });
 }
@@ -81,6 +81,8 @@
 
 - (void) captureImageDidFinish:(UIImage *)image
 {
+    DrunkDetector *beer = [[DrunkDetector alloc] init];
+    NSLog(@"%@",[[beer calcDrunkess:image] description]);
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];

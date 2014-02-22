@@ -1,6 +1,7 @@
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcworkspace/contents.xcworkspacedata
+drinky.xcworkspace/xcuserdata/
+drinky.xcworkspace/xcuserdata/
+drinky.xcodeproj/project.xcworkspace/xcuserdata
+
 .DS_Store
 
 # CocoaPods

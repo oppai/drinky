@@ -13,19 +13,33 @@
 - (id)init
 {
     if(self = [super init]){
-        NSDictionary *detectorOptions = @{
-            CIDetectorTracking:@YES,
-            CIDetectorAccuracy:CIDetectorAccuracyLow,
-        };
-        faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace
+        faceHighDetector = [CIDetector detectorOfType:CIDetectorTypeFace
                                           context:nil
-                                          options:detectorOptions];
+                                          options:@{
+                              CIDetectorTracking:@YES,
+                              CIDetectorAccuracy:CIDetectorAccuracyHigh,
+                              }];
+        faceLowDetector = [CIDetector detectorOfType:CIDetectorTypeFace
+                                        context:nil
+                                        options:@{
+                            CIDetectorTracking:@YES,
+                            CIDetectorAccuracy:CIDetectorAccuracyLow,
+                            }];
     }
     return self;
 }
 
-- (CGFloat)calcDrunkess:(UIImage *)_image
+/**
+ *  (NSArray *)calcDrunkess:(UIImage *)_image
+ *    return ex:
+ *    ({
+ *      bounds = "NSRect: {{1638.375, 376.125}, {828.75, 828.75}}";
+ *      level = 0;
+ *    })
+ */
+- (NSArray *)calcDrunkess:(UIImage *)_image
 {
+    NSMutableArray *result = [NSMutableArray array];
     CIImage *image = [[CIImage alloc] initWithImage:_image];
     
     NSDictionary *detect_option = @{
@@ -34,18 +48,56 @@
         CIDetectorEyeBlink:@YES
     };
     
-    NSArray *features = [faceDetector featuresInImage:image options:detect_option];
-    for (CIFaceFeature *ff in features) {
-        NSLog(@"---------------------------");
-        NSLog(@"%d",ff.trackingID);
-        NSLog(@"%u",ff.hasRightEyePosition);
-        NSLog(@"%u",ff.hasLeftEyePosition);
-        NSLog(@"%u",ff.rightEyeClosed);
-        NSLog(@"%u",ff.leftEyeClosed);
-        NSLog(@"%u",ff.hasMouthPosition);
-        NSLog(@"%u",ff.hasSmile);
+    NSArray *features_h = [faceHighDetector
+                         featuresInImage:image
+                         options:detect_option];
+    NSArray *features_l = [faceLowDetector
+                           featuresInImage:image
+                           options:detect_option];
+
+    if ([features_h count] == [features_l count]){
+        for (CIFaceFeature *hf in features_h) {
+            NSInteger i = [features_h indexOfObject:hf];
+            CIFaceFeature *lf = [features_l objectAtIndex:i];
+            int accuracy = 0, blind = 0, smile = 0;
+            
+            if( (hf.hasLeftEyePosition && hf.hasRightEyePosition) ||
+               (hf.hasLeftEyePosition && hf.hasMouthPosition) ||
+               (hf.hasRightEyePosition && hf.hasMouthPosition) ){
+                accuracy += 1;
+            }
+            
+            if( (lf.hasLeftEyePosition && lf.hasRightEyePosition) ||
+               (lf.hasLeftEyePosition && lf.hasMouthPosition) ||
+               (lf.hasRightEyePosition && lf.hasMouthPosition) ){
+                accuracy += 1;
+            }
+            
+            if ( hf.rightEyeClosed ){
+                blind += 1;
+            }
+            
+            if ( lf.rightEyeClosed ){
+                blind += 1;
+            }
+            
+            if ( hf.hasSmile ){
+                smile += 1;
+            }
+            
+            if ( lf.hasSmile ){
+                smile += 1;
+            }
+            
+            NSDictionary *data = @{
+                @"level":[NSNumber numberWithInt:(2-accuracy)+blind+smile],
+                @"bounds":[NSValue valueWithCGRect:hf.bounds]
+            };
+            [result addObject:data];
+        }
     }
 
-    return 0.0f;
+    return result;
 }
+
 @end

@@ -11,11 +11,15 @@
 #import "CustomCamera.h"
 #import "EAIntroView.h"
 #import "DrunkDetector.h"
+#import "AFPhotoEditorController.h"
+#import "AFPhotoEditorCustomization.h"
+
 
 @interface ViewController : UIViewController
 <EAIntroDelegate>
 {
     DBCameraViewController *_cameraController;
+    AFPhotoEditorController *_editorController;
     CustomCamera *camera;
 }
 @end
@@ -35,7 +39,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
 #endif
@@ -51,7 +55,6 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [_imageView setImage:_detailImage];
 }
 

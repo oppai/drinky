@@ -13,6 +13,18 @@
 		07B6A75218B91DF100C28B47 /* bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A74E18B91DF100C28B47 /* bg2@2x.png */; };
 		07B6A75318B91DF100C28B47 /* bg3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A74F18B91DF100C28B47 /* bg3@2x.png */; };
 		07B6A75418B91DF100C28B47 /* bg4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A75018B91DF100C28B47 /* bg4@2x.png */; };
+		07B6A76218B928E400C28B47 /* libAviarySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A75F18B928E400C28B47 /* libAviarySDK.a */; };
+		07B6A76318B928E400C28B47 /* AviarySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A76118B928E400C28B47 /* AviarySDKResources.bundle */; };
+		07B6A76518B92C5900C28B47 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A76418B92C5900C28B47 /* Accelerate.framework */; };
+		07B6A76718B92C6400C28B47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A76618B92C6400C28B47 /* CoreData.framework */; };
+		07B6A76918B92C6F00C28B47 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A76818B92C6F00C28B47 /* CoreText.framework */; };
+		07B6A76B18B92C7A00C28B47 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A76A18B92C7A00C28B47 /* libsqlite3.0.dylib */; };
+		07B6A76D18B92C8600C28B47 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A76C18B92C8500C28B47 /* libz.1.2.5.dylib */; };
+		07B6A76F18B92C9200C28B47 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A76E18B92C9200C28B47 /* MessageUI.framework */; };
+		07B6A77118B92C9D00C28B47 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A77018B92C9D00C28B47 /* OpenGLES.framework */; };
+		07B6A77318B92CA900C28B47 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A77218B92CA900C28B47 /* QuartzCore.framework */; };
+		07B6A77518B92CB300C28B47 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A77418B92CB300C28B47 /* StoreKit.framework */; };
+		07B6A77718B92CBC00C28B47 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6A77618B92CBC00C28B47 /* SystemConfiguration.framework */; };
 		07F6636618B82B2B00D22919 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636518B82B2B00D22919 /* Foundation.framework */; };
 		07F6636818B82B2B00D22919 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636718B82B2B00D22919 /* CoreGraphics.framework */; };
 		07F6636A18B82B2B00D22919 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636918B82B2B00D22919 /* UIKit.framework */; };
@@ -50,6 +62,26 @@
 		07B6A74E18B91DF100C28B47 /* bg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg2@2x.png"; sourceTree = "<group>"; };
 		07B6A74F18B91DF100C28B47 /* bg3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg3@2x.png"; sourceTree = "<group>"; };
 		07B6A75018B91DF100C28B47 /* bg4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg4@2x.png"; sourceTree = "<group>"; };
+		07B6A75718B928E400C28B47 /* AFOpenGLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOpenGLManager.h; sourceTree = "<group>"; };
+		07B6A75818B928E400C28B47 /* AFPhotoEditorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotoEditorContext.h; sourceTree = "<group>"; };
+		07B6A75918B928E400C28B47 /* AFPhotoEditorController+InAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFPhotoEditorController+InAppPurchase.h"; sourceTree = "<group>"; };
+		07B6A75A18B928E400C28B47 /* AFPhotoEditorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotoEditorController.h; sourceTree = "<group>"; };
+		07B6A75B18B928E400C28B47 /* AFPhotoEditorControllerOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotoEditorControllerOptions.h; sourceTree = "<group>"; };
+		07B6A75C18B928E400C28B47 /* AFPhotoEditorCustomization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotoEditorCustomization.h; sourceTree = "<group>"; };
+		07B6A75D18B928E400C28B47 /* AFPhotoEditorProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotoEditorProduct.h; sourceTree = "<group>"; };
+		07B6A75E18B928E400C28B47 /* AFPhotoEditorSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPhotoEditorSession.h; sourceTree = "<group>"; };
+		07B6A75F18B928E400C28B47 /* libAviarySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAviarySDK.a; sourceTree = "<group>"; };
+		07B6A76118B928E400C28B47 /* AviarySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AviarySDKResources.bundle; sourceTree = "<group>"; };
+		07B6A76418B92C5900C28B47 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		07B6A76618B92C6400C28B47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		07B6A76818B92C6F00C28B47 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		07B6A76A18B92C7A00C28B47 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		07B6A76C18B92C8500C28B47 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		07B6A76E18B92C9200C28B47 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		07B6A77018B92C9D00C28B47 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		07B6A77218B92CA900C28B47 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		07B6A77418B92CB300C28B47 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		07B6A77618B92CBC00C28B47 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		07F6636218B82B2B00D22919 /* drinky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drinky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F6636518B82B2B00D22919 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		07F6636718B82B2B00D22919 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,8 +111,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B6A77718B92CBC00C28B47 /* SystemConfiguration.framework in Frameworks */,
+				07B6A77518B92CB300C28B47 /* StoreKit.framework in Frameworks */,
+				07B6A77318B92CA900C28B47 /* QuartzCore.framework in Frameworks */,
+				07B6A77118B92C9D00C28B47 /* OpenGLES.framework in Frameworks */,
+				07B6A76F18B92C9200C28B47 /* MessageUI.framework in Frameworks */,
+				07B6A76D18B92C8600C28B47 /* libz.1.2.5.dylib in Frameworks */,
+				07B6A76B18B92C7A00C28B47 /* libsqlite3.0.dylib in Frameworks */,
+				07B6A76918B92C6F00C28B47 /* CoreText.framework in Frameworks */,
+				07B6A76718B92C6400C28B47 /* CoreData.framework in Frameworks */,
+				07B6A76518B92C5900C28B47 /* Accelerate.framework in Frameworks */,
 				07F6636818B82B2B00D22919 /* CoreGraphics.framework in Frameworks */,
 				07F6636A18B82B2B00D22919 /* UIKit.framework in Frameworks */,
+				07B6A76218B928E400C28B47 /* libAviarySDK.a in Frameworks */,
 				07F6636618B82B2B00D22919 /* Foundation.framework in Frameworks */,
 				61CDFB88835F4C38AB0A43EB /* libPods.a in Frameworks */,
 			);
@@ -128,9 +171,43 @@
 			name = Intro;
 			sourceTree = "<group>";
 		};
+		07B6A75518B928E400C28B47 /* AviarySDK */ = {
+			isa = PBXGroup;
+			children = (
+				07B6A75618B928E400C28B47 /* Headers */,
+				07B6A75F18B928E400C28B47 /* libAviarySDK.a */,
+				07B6A76018B928E400C28B47 /* Resources */,
+			);
+			path = AviarySDK;
+			sourceTree = "<group>";
+		};
+		07B6A75618B928E400C28B47 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				07B6A75718B928E400C28B47 /* AFOpenGLManager.h */,
+				07B6A75818B928E400C28B47 /* AFPhotoEditorContext.h */,
+				07B6A75918B928E400C28B47 /* AFPhotoEditorController+InAppPurchase.h */,
+				07B6A75A18B928E400C28B47 /* AFPhotoEditorController.h */,
+				07B6A75B18B928E400C28B47 /* AFPhotoEditorControllerOptions.h */,
+				07B6A75C18B928E400C28B47 /* AFPhotoEditorCustomization.h */,
+				07B6A75D18B928E400C28B47 /* AFPhotoEditorProduct.h */,
+				07B6A75E18B928E400C28B47 /* AFPhotoEditorSession.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		07B6A76018B928E400C28B47 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				07B6A76118B928E400C28B47 /* AviarySDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		07F6635918B82B2B00D22919 = {
 			isa = PBXGroup;
 			children = (
+				07B6A75518B928E400C28B47 /* AviarySDK */,
 				07F6636B18B82B2B00D22919 /* drinky */,
 				07F6638D18B82B2C00D22919 /* drinkyTests */,
 				07F6636418B82B2B00D22919 /* Frameworks */,
@@ -151,6 +228,16 @@
 		07F6636418B82B2B00D22919 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07B6A77618B92CBC00C28B47 /* SystemConfiguration.framework */,
+				07B6A77418B92CB300C28B47 /* StoreKit.framework */,
+				07B6A77218B92CA900C28B47 /* QuartzCore.framework */,
+				07B6A77018B92C9D00C28B47 /* OpenGLES.framework */,
+				07B6A76E18B92C9200C28B47 /* MessageUI.framework */,
+				07B6A76C18B92C8500C28B47 /* libz.1.2.5.dylib */,
+				07B6A76A18B92C7A00C28B47 /* libsqlite3.0.dylib */,
+				07B6A76818B92C6F00C28B47 /* CoreText.framework */,
+				07B6A76618B92C6400C28B47 /* CoreData.framework */,
+				07B6A76418B92C5900C28B47 /* Accelerate.framework */,
 				07F6636518B82B2B00D22919 /* Foundation.framework */,
 				07F6636718B82B2B00D22919 /* CoreGraphics.framework */,
 				07F6636918B82B2B00D22919 /* UIKit.framework */,
@@ -290,6 +377,7 @@
 				07B6A75318B91DF100C28B47 /* bg3@2x.png in Resources */,
 				07F6637918B82B2B00D22919 /* Main_iPhone.storyboard in Resources */,
 				07B6A75418B91DF100C28B47 /* bg4@2x.png in Resources */,
+				07B6A76318B928E400C28B47 /* AviarySDKResources.bundle in Resources */,
 				07F6637018B82B2B00D22919 /* InfoPlist.strings in Resources */,
 				07B6A75218B91DF100C28B47 /* bg2@2x.png in Resources */,
 				07B6A75118B91DF100C28B47 /* bg1@2x.png in Resources */,
@@ -489,6 +577,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "drinky/drinky-Prefix.pch";
 				INFOPLIST_FILE = "drinky/drinky-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/kodam/Documents/ios/drinky/ios/AviarySDK,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -503,6 +595,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "drinky/drinky-Prefix.pch";
 				INFOPLIST_FILE = "drinky/drinky-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/kodam/Documents/ios/drinky/ios/AviarySDK,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

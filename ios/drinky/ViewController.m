@@ -9,8 +9,10 @@
 #import "ViewController.h"
 #import "CustomCamera.h"
 
-@interface ViewController ()<DBCameraViewControllerDelegate>
+@interface ViewController ()
+<DBCameraViewControllerDelegate,AFPhotoEditorControllerDelegate>
 - (void)detectFace:(NSTimer*)timer;
+@property (nonatomic, strong) NSMutableArray * sessions;
 @end
 
 @implementation ViewController
@@ -23,7 +25,14 @@
     [camera buildIntarface];
     
     _cameraController = [[DBCameraViewController alloc] initWithDelegate:self cameraView:camera];
-
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController pushViewController:_cameraController animated:NO];
+    
+    id value = [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstRunning"];
+    if(!([value isKindOfClass:[NSString class]] && [value isEqualToString:@"NO"])){
+        [self showIntro];
+    }
+    
     [NSTimer scheduledTimerWithTimeInterval:1
                                      target:self
                                    selector:@selector(detectFace:)
@@ -107,6 +116,8 @@
 
 - (void)introDidFinish:(EAIntroView *)introView
 {
+    [[NSUserDefaults standardUserDefaults] setObject:@"NO"
+                                              forKey:@"FirstRunning"];
 }
 
 # pragma mmark - UIViewController
@@ -114,14 +125,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:_cameraController];
-    [nav setNavigationBarHidden:YES];
-    [self presentViewController:nav animated:NO completion:nil];
-    
-    if(YES){
-        [self showIntro];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -143,11 +146,29 @@
 #endif
     
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-    
-    DetailViewController *detail = [[DetailViewController alloc] init];
-    [detail setDetailImage:image];
-    [self.navigationController pushViewController:detail animated:NO];
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+
+    _editorController = [[AFPhotoEditorController alloc] initWithImage:image];
+    [_editorController setDelegate:self];
+    [self presentViewController:_editorController animated:YES completion:nil];
+}
+
+#pragma mark - AFPhotoEditorControllerDelegate
+
+- (void)photoEditor:(AFPhotoEditorController *)editor finishedWithImage:(UIImage *)image
+{
+    // Handle the result image here
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    [_editorController dismissViewControllerAnimated:YES
+                                          completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (void)photoEditorCanceled:(AFPhotoEditorController *)editor
+{
+    // Handle cancellation here
+    [_editorController dismissViewControllerAnimated:YES
+                                          completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end

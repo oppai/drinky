@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071ADB0A18B8694B00E2E4FF /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 071ADB0918B8694B00E2E4FF /* CustomCamera.m */; };
+		071ADB1218B887BB00E2E4FF /* DrunkDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 071ADB1118B887BB00E2E4FF /* DrunkDetector.m */; };
 		07F6636618B82B2B00D22919 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636518B82B2B00D22919 /* Foundation.framework */; };
 		07F6636818B82B2B00D22919 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636718B82B2B00D22919 /* CoreGraphics.framework */; };
 		07F6636A18B82B2B00D22919 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636918B82B2B00D22919 /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		071ADB0818B8694B00E2E4FF /* CustomCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCamera.h; sourceTree = "<group>"; };
 		071ADB0918B8694B00E2E4FF /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCamera.m; sourceTree = "<group>"; };
+		071ADB1018B887BB00E2E4FF /* DrunkDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrunkDetector.h; sourceTree = "<group>"; };
+		071ADB1118B887BB00E2E4FF /* DrunkDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrunkDetector.m; sourceTree = "<group>"; };
 		07F6636218B82B2B00D22919 /* drinky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drinky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F6636518B82B2B00D22919 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		07F6636718B82B2B00D22919 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +100,15 @@
 			name = CustomCamera;
 			sourceTree = "<group>";
 		};
+		071ADB0F18B8879600E2E4FF /* DrunkDetector */ = {
+			isa = PBXGroup;
+			children = (
+				071ADB1018B887BB00E2E4FF /* DrunkDetector.h */,
+				071ADB1118B887BB00E2E4FF /* DrunkDetector.m */,
+			);
+			name = DrunkDetector;
+			sourceTree = "<group>";
+		};
 		07F6635918B82B2B00D22919 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +144,7 @@
 		07F6636B18B82B2B00D22919 /* drinky */ = {
 			isa = PBXGroup;
 			children = (
+				071ADB0F18B8879600E2E4FF /* DrunkDetector */,
 				071ADB0718B868CD00E2E4FF /* CustomCamera */,
 				07F6637418B82B2B00D22919 /* AppDelegate.h */,
 				07F6637518B82B2B00D22919 /* AppDelegate.m */,
@@ -307,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071ADB1218B887BB00E2E4FF /* DrunkDetector.m in Sources */,
 				07F6637F18B82B2B00D22919 /* ViewController.m in Sources */,
 				071ADB0A18B8694B00E2E4FF /* CustomCamera.m in Sources */,
 				07F6637618B82B2B00D22919 /* AppDelegate.m in Sources */,

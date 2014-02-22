@@ -8,12 +8,47 @@
 
 #import <UIKit/UIKit.h>
 #import "DBCameraViewController.h"
+#import "DrunkDetector.h"
 
 @interface ViewController : UIViewController
-<DBCameraViewControllerDelegate>
 {
-    UIImageView *_imageView;
     DBCameraViewController *_cameraController;
 }
+@end
+
+
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+
+@interface DetailViewController : UIViewController {
+    UIImageView *_imageView;
+}
 @property (nonatomic, strong) UIImage *detailImage;
+@end
+
+@implementation DetailViewController
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+#endif
+    
+    [self.navigationItem setTitle:@"Detail"];
+    
+    _imageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    [_imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [self.view addSubview:_imageView];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [_imageView setImage:_detailImage];
+}
+
 @end

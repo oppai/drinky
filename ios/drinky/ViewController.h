@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBCameraViewController.h"
 
 @interface ViewController : UIViewController
-
+<DBCameraViewControllerDelegate>
+{
+    UIImageView *_imageView;
+    DBCameraViewController *_cameraController;
+}
+@property (nonatomic, strong) UIImage *detailImage;
 @end

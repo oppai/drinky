@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		071ADB0A18B8694B00E2E4FF /* CustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 071ADB0918B8694B00E2E4FF /* CustomCamera.m */; };
 		071ADB1218B887BB00E2E4FF /* DrunkDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 071ADB1118B887BB00E2E4FF /* DrunkDetector.m */; };
+		07B6A75118B91DF100C28B47 /* bg1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A74D18B91DF100C28B47 /* bg1@2x.png */; };
+		07B6A75218B91DF100C28B47 /* bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A74E18B91DF100C28B47 /* bg2@2x.png */; };
+		07B6A75318B91DF100C28B47 /* bg3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A74F18B91DF100C28B47 /* bg3@2x.png */; };
+		07B6A75418B91DF100C28B47 /* bg4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6A75018B91DF100C28B47 /* bg4@2x.png */; };
 		07F6636618B82B2B00D22919 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636518B82B2B00D22919 /* Foundation.framework */; };
 		07F6636818B82B2B00D22919 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636718B82B2B00D22919 /* CoreGraphics.framework */; };
 		07F6636A18B82B2B00D22919 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F6636918B82B2B00D22919 /* UIKit.framework */; };
@@ -42,6 +46,10 @@
 		071ADB0918B8694B00E2E4FF /* CustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCamera.m; sourceTree = "<group>"; };
 		071ADB1018B887BB00E2E4FF /* DrunkDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrunkDetector.h; sourceTree = "<group>"; };
 		071ADB1118B887BB00E2E4FF /* DrunkDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrunkDetector.m; sourceTree = "<group>"; };
+		07B6A74D18B91DF100C28B47 /* bg1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg1@2x.png"; sourceTree = "<group>"; };
+		07B6A74E18B91DF100C28B47 /* bg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg2@2x.png"; sourceTree = "<group>"; };
+		07B6A74F18B91DF100C28B47 /* bg3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg3@2x.png"; sourceTree = "<group>"; };
+		07B6A75018B91DF100C28B47 /* bg4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg4@2x.png"; sourceTree = "<group>"; };
 		07F6636218B82B2B00D22919 /* drinky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drinky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F6636518B82B2B00D22919 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		07F6636718B82B2B00D22919 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +117,17 @@
 			name = DrunkDetector;
 			sourceTree = "<group>";
 		};
+		07B6A74C18B91DCF00C28B47 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				07B6A74D18B91DF100C28B47 /* bg1@2x.png */,
+				07B6A74E18B91DF100C28B47 /* bg2@2x.png */,
+				07B6A74F18B91DF100C28B47 /* bg3@2x.png */,
+				07B6A75018B91DF100C28B47 /* bg4@2x.png */,
+			);
+			name = Intro;
+			sourceTree = "<group>";
+		};
 		07F6635918B82B2B00D22919 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +180,7 @@
 		07F6636C18B82B2B00D22919 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				07B6A74C18B91DCF00C28B47 /* Intro */,
 				07F6636D18B82B2B00D22919 /* drinky-Info.plist */,
 				07F6636E18B82B2B00D22919 /* InfoPlist.strings */,
 				07F6637118B82B2B00D22919 /* main.m */,
@@ -267,8 +287,12 @@
 			files = (
 				07F6637C18B82B2B00D22919 /* Main_iPad.storyboard in Resources */,
 				07F6638118B82B2B00D22919 /* Images.xcassets in Resources */,
+				07B6A75318B91DF100C28B47 /* bg3@2x.png in Resources */,
 				07F6637918B82B2B00D22919 /* Main_iPhone.storyboard in Resources */,
+				07B6A75418B91DF100C28B47 /* bg4@2x.png in Resources */,
 				07F6637018B82B2B00D22919 /* InfoPlist.strings in Resources */,
+				07B6A75218B91DF100C28B47 /* bg2@2x.png in Resources */,
+				07B6A75118B91DF100C28B47 /* bg1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

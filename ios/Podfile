@@ -1,2 +1,3 @@
 platform :ios,'7.0'
 pod 'DBCamera', '~> 0.8'
+pod 'EAIntroView', '~> 2.2.1'

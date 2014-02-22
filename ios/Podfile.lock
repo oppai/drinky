@@ -1,10 +1,13 @@
 PODS:
   - DBCamera (0.8)
+  - EAIntroView (2.2.1)
 
 DEPENDENCIES:
   - DBCamera (~> 0.8)
+  - EAIntroView (~> 2.2.1)
 
 SPEC CHECKSUMS:
   DBCamera: e22e29524342cd6871c8d4e5b41076bc7e4bbb9d
+  EAIntroView: 7bc9e6b0738999343faf8e4a8b092b2b1218332b
 
 COCOAPODS: 0.29.0

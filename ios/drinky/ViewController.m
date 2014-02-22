@@ -61,6 +61,56 @@
     return resultImage;
 }
 
+- (void)showIntro {
+    
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.titleColor = [UIColor blackColor];
+    page1.title = @"NumBay.net";
+    page1.titlePositionY = 340;
+    page1.titleFont = [UIFont fontWithName:@"Helvetica-Bold" size:40];
+    page1.descColor = [UIColor whiteColor];
+    page1.desc = @"酔っぱらって..\n もっと盛り上げる!";
+    page1.descPositionY = 210;
+    page1.descFont = [UIFont fontWithName:@"HiraKakuProN-W3" size:20];
+    page1.bgImage = [UIImage imageNamed:@"bg1"];
+    
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.title = @"酔っぱらってる?";
+    page2.titlePositionY = 240;
+    page2.titleFont = [UIFont fontWithName:@"HiraKakuProN-W6" size:35];
+    page2.desc =  @"友達にカメラをかざすと... \n どれだけ酔っぱらっているかわかる!";
+    page2.descPositionY = 200;
+    page2.descFont = [UIFont fontWithName:@"HiraKakuProN-W3" size:15];
+    page2.bgImage = [UIImage imageNamed:@"bg2"];
+    
+    
+    EAIntroPage *page3 = [EAIntroPage page];
+    page3.title = @"簡単に編集して...";
+    page3.titlePositionY = 240;
+    page3.titleFont = [UIFont fontWithName:@"HiraKakuProN-W6" size:35];
+    page3.bgImage = [UIImage imageNamed:@"bg3"];
+    
+    
+    EAIntroPage *page4 = [EAIntroPage page];
+    page4.title = @"SNSで共有しよう!";
+    page4.titlePositionY = 140;
+    page4.titleFont = [UIFont fontWithName:@"HiraKakuProN-W6" size:32];
+    page4.bgImage = [UIImage imageNamed:@"bg4"];
+    
+    EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds];
+    [intro setDelegate:self];
+    [intro setPages:@[page1,page2,page3,page4]];
+    [intro showInView:_cameraController.view animateDuration:0.0];
+}
+
+# pragma mmark - EAIntroDelegate
+
+- (void)introDidFinish:(EAIntroView *)introView
+{
+}
+
+# pragma mmark - UIViewController
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -68,6 +118,10 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:_cameraController];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:NO completion:nil];
+    
+    if(YES){
+        [self showIntro];
+    }
 }
 
 - (void)didReceiveMemoryWarning

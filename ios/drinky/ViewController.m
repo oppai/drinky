@@ -11,7 +11,6 @@
 
 @interface ViewController ()
 <DBCameraViewControllerDelegate,AFPhotoEditorControllerDelegate>
-- (void)detectFace:(NSTimer*)timer;
 @property (nonatomic, strong) NSMutableArray * sessions;
 @end
 
@@ -32,34 +31,14 @@
     if(!([value isKindOfClass:[NSString class]] && [value isEqualToString:@"NO"])){
         [self showIntro];
     }
-    
-    [NSTimer scheduledTimerWithTimeInterval:1
-                                     target:self
-                                   selector:@selector(detectFace:)
-                                   userInfo:nil
-                                    repeats:YES];
 }
 
-- (void)detectFace:(NSTimer*)timer
-{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            // TODO:諦めない
-//            UIView *preview = [[UIView alloc] initWithFrame:[camera.previewLayer frame]];
-//            [preview.layer insertSublayer:camera.layer atIndex:0];
-//            UIImage *image = [self convert:preview];
-//
-//            DrunkDetector *beer = [[DrunkDetector alloc] init];
-//            [beer calcDrunkess:image];
-        });
-    });
-}
 
 - (UIImage*)convertView:(UIView*)sourceView
 {
     sourceView.layer.borderWidth = 1.0f;
     sourceView.layer.borderColor = [UIColor blackColor].CGColor;
-    sourceView.layer.backgroundColor = [UIColor redColor].CGColor;
+    sourceView.layer.backgroundColor = [UIColor clearColor].CGColor;
     sourceView.layer.cornerRadius = 4.0f;
     
     // UIView を変換して UIView（resultImage）を取得
@@ -70,26 +49,19 @@
     return resultImage;
 }
 
--(UIImage*)pressImage:(UIImage*)background
-          composeImage:(UIImage*)stamp
-                 x:(NSInteger)x
-                y:(NSInteger)y
-{
-    CGFloat backWidth = CGImageGetWidth(background.CGImage);
-    CGFloat backHeight = CGImageGetHeight(background.CGImage);
+-(UIImage*)getWImage:(UIImage*)bottomImage frontImage:(UIImage*)frontImage{
+    int width = bottomImage.size.width;
+    int height = bottomImage.size.height;
     
-    CGFloat stampWidth = CGImageGetWidth(stamp.CGImage);
-    CGFloat stampHeight = CGImageGetHeight(stamp.CGImage);
+    CGSize newSize = CGSizeMake(width, height);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
+    [bottomImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    [frontImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height) blendMode:kCGBlendModeNormal alpha:1.0];
     
-    
-    UIGraphicsBeginImageContext(CGSizeMake(backWidth, backHeight));
-    [background drawInRect:CGRectMake(0, 0, backWidth, backHeight)];
-    [stamp drawInRect:CGRectMake(0, 0, stampWidth, stampHeight)];
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return image;
+    return newImage;
 }
 
 - (void)showIntro {
@@ -160,20 +132,34 @@
 
 - (void) captureImageDidFinish:(UIImage *)image
 {
-//    DrunkDetector *beer = [[DrunkDetector alloc] init];
-//    NSArray *items = [beer calcDrunkess:image];
-//    for (NSDictionary *item in items) {
-//        NSLog(@"%@",[item description]);
+    NSInteger level = 0;
+    DrunkDetector *beer = [[DrunkDetector alloc] init];
+    NSArray *items = [beer calcDrunkess:image];
+    for (NSDictionary *item in items) {
+        NSLog(@"%@",[item description]);
 //        UILabel *label = [[UILabel alloc] init];
 //        label.font = [UIFont systemFontOfSize:24];
 //        label.textColor = [UIColor whiteColor];
 //        label.backgroundColor = [UIColor colorWithWhite:0.0 alpha:60];
 //        label.text = [NSString stringWithFormat:@"LEVEL %@",[item valueForKey:@"level"]];
-//        
+//        label.frame = CGRectMake(label.frame.origin.x, , <#CGFloat width#>, <#CGFloat height#>)
 //        CGRect rect = [[item valueForKey:@"bounds"] CGRectValue];
 //        image = [self pressImage:image composeImage:[self convertView:label]
 //                       x:rect.origin.x y:(rect.origin.y - rect.size.height)];
-//    }
+        level += [[item valueForKey:@"level"] integerValue];
+    }
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:200];
+    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
+    label.text = [NSString stringWithFormat:@"NomBay LEVEL %u",level];
+    [label setFrame:(CGRect){ image.size.width*0.1, image.size.height*0.8,image.size.width *0.8, image.size.height*0.2}];
+    
+    UIView *view2 = [[UIView alloc] initWithFrame:(CGRect){ 0, 0,image.size.width, image.size.height}];
+    [view2 setBackgroundColor:[UIColor clearColor]];
+    [view2 addSubview:label];
+    
+    UIImage *new_image = [self getWImage:image frontImage:[self convertView:view2]];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
@@ -181,7 +167,7 @@
     
     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 
-    _editorController = [[AFPhotoEditorController alloc] initWithImage:image];
+    _editorController = [[AFPhotoEditorController alloc] initWithImage:new_image];
     [_editorController setDelegate:self];
     [self presentViewController:_editorController animated:YES completion:nil];
 }

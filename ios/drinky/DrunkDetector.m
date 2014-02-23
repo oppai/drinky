@@ -90,7 +90,7 @@
             }
             
             NSDictionary *data = @{
-                @"level":[NSNumber numberWithInt:(2-accuracy)+blind+smile],
+                @"level":[NSNumber numberWithInt:1+(2-accuracy)+blind+smile],
                 @"bounds":[NSValue valueWithCGRect:hf.bounds]
             };
             [result addObject:data];

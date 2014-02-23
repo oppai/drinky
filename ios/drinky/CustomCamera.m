@@ -8,9 +8,11 @@
 
 #import "CustomCamera.h"
 
-@interface CustomCamera ()
+@interface CustomCamera (){
+}
 @property (nonatomic, strong) UIButton *triggerButton,*closeButton;
 @property (nonatomic, strong) CALayer *focusBox, *exposeBox;
+@property (nonatomic, strong) UILabel *levelLabel;
 @end
 
 @implementation CustomCamera
@@ -19,11 +21,74 @@
 {
     //[self addSubview:self.closeButton];
     [self addSubview:self.triggerButton];
+    [self addSubview:self.levelLabel];
     
     [self.previewLayer addSublayer:self.focusBox];
     [self.previewLayer addSublayer:self.exposeBox];
     
     [self createGesture];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.5
+                                     target:self
+                                   selector:@selector(detectFace:)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+
+- (void)detectFace:(NSTimer*)timer
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
+//            DrunkDetector *beer = [[DrunkDetector alloc] init];
+//            NSArray *array = [beer calcDrunkess:[self convertView:self.previewLayer]];
+//            NSLog(@"%@",[array description]);
+        });
+    });
+}
+
+-(UIImage*)getWImage:(UIImage*)bottomImage frontImage:(UIImage*)frontImage{
+    int width = bottomImage.size.width;
+    int height = bottomImage.size.height;
+    
+    CGSize newSize = CGSizeMake(width, height);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
+    [bottomImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    [frontImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height) blendMode:kCGBlendModeNormal alpha:1.0];
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+- (UIImage*)convertView:(UIView*)sourceView
+{
+    sourceView.layer.borderWidth = 1.0f;
+    sourceView.layer.borderColor = [UIColor blackColor].CGColor;
+    sourceView.layer.backgroundColor = [UIColor redColor].CGColor;
+    sourceView.layer.cornerRadius = 4.0f;
+    
+    // UIView を変換して UIView（resultImage）を取得
+    UIGraphicsBeginImageContext(sourceView.frame.size);
+    [sourceView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
+}
+
+- (UILabel *) levelLabel
+{
+    if( !_levelLabel ){
+        NSInteger level = 0;
+        _levelLabel = [[UILabel alloc] init];
+        _levelLabel.font = [UIFont systemFontOfSize:24];
+        _levelLabel.textColor = [UIColor whiteColor];
+        _levelLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
+        _levelLabel.text = [NSString stringWithFormat:@"NomBay Level  ?"];
+        [_levelLabel setFrame:(CGRect){ CGRectGetMidX(self.bounds) - 150, CGRectGetMaxY(self.frame) - 85 - 100, 300, 80 }];
+    }
+    return _levelLabel;
 }
 
 - (UIButton *) triggerButton

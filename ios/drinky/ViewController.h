@@ -86,7 +86,7 @@
 - (void)shareButtonAction
 {
     // activityItems
-    NSString *text  = @"Share your #NomBay - http://nombay.net";
+    NSString *text  = @"Share your #NomBay #PHDJapan";
     NSURL    *url   = [NSURL URLWithString:@"http://nombay.net"];
     UIImage  *image = [_imageView image];
     NSArray *activityItems = @[text, url, image];

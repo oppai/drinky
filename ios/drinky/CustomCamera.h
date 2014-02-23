@@ -7,8 +7,9 @@
 //
 
 #import "DBCameraView.h"
+#import "DrunkDetector.h"
 
 @interface CustomCamera : DBCameraView
-<DBCameraViewDelegate>
+<DBCameraViewDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>
 - (void) buildIntarface;
 @end

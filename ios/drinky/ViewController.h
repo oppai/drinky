@@ -14,6 +14,9 @@
 #import "AFPhotoEditorController.h"
 #import "AFPhotoEditorCustomization.h"
 
+#import "ZYInstapaperActivity.h"
+#import "LINEActivity.h"
+#import "DMActivityInstagram.h"
 
 @interface ViewController : UIViewController
 <EAIntroDelegate>
@@ -45,6 +48,7 @@
 #endif
     
     _imageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [_imageView setBackgroundColor:[UIColor colorWithRed:1.0 green:0.764 blue:0.0 alpha:1.0]];
     [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [_imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:_imageView];
@@ -56,7 +60,16 @@
           forControlEvents:UIControlEventTouchDown];
     back_button.frame = CGRectMake(-20.0, 0.0, 150, 80);
     
+    UIButton *share_button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [share_button setTitle:@"Share NomBay Photo!" forState:UIControlStateNormal];
+    [share_button addTarget:self
+                    action:@selector(shareButtonAction)
+          forControlEvents:UIControlEventTouchDown];
+    share_button.frame = CGRectMake( 0.0,  _imageView.frame.size.height - 80, 300, 80);
+
+    
     [self.view addSubview:back_button];
+    [self.view addSubview:share_button];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -69,5 +82,34 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)shareButtonAction
+{
+    // activityItems
+    NSString *text  = @"Share your #NomBay - http://nombay.net";
+    NSURL    *url   = [NSURL URLWithString:@"http://nombay.net"];
+    UIImage  *image = [_imageView image];
+    NSArray *activityItems = @[text, url, image];
+    
+    
+    // activities
+    DMActivityInstagram  *instagram  = [[DMActivityInstagram alloc] init];
+    ZYInstapaperActivity *instapaper = [[ZYInstapaperActivity alloc] init];
+    LINEActivity         *line       = [[LINEActivity alloc] init];
+    
+    NSArray *activities = @[
+                            instagram,
+                            instapaper,
+                            line,
+                            ];
+    
+    // UIActivityViewController
+    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                               applicationActivities:activities];
+    
+    // show
+    [self presentViewController:activityView animated:YES completion:nil];
+}
+
 
 @end

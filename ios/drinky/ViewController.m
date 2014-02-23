@@ -55,7 +55,7 @@
     });
 }
 
-- (UIImage*)convert:(UIView*)sourceView
+- (UIImage*)convertView:(UIView*)sourceView
 {
     sourceView.layer.borderWidth = 1.0f;
     sourceView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -70,11 +70,33 @@
     return resultImage;
 }
 
+-(UIImage*)pressImage:(UIImage*)background
+          composeImage:(UIImage*)stamp
+                 x:(NSInteger)x
+                y:(NSInteger)y
+{
+    CGFloat backWidth = CGImageGetWidth(background.CGImage);
+    CGFloat backHeight = CGImageGetHeight(background.CGImage);
+    
+    CGFloat stampWidth = CGImageGetWidth(stamp.CGImage);
+    CGFloat stampHeight = CGImageGetHeight(stamp.CGImage);
+    
+    
+    UIGraphicsBeginImageContext(CGSizeMake(backWidth, backHeight));
+    [background drawInRect:CGRectMake(0, 0, backWidth, backHeight)];
+    [stamp drawInRect:CGRectMake(0, 0, stampWidth, stampHeight)];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 - (void)showIntro {
     
     EAIntroPage *page1 = [EAIntroPage page];
     page1.titleColor = [UIColor blackColor];
-    page1.title = @"NumBay.net";
+    page1.title = @"NomBay.net";
     page1.titlePositionY = 340;
     page1.titleFont = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     page1.descColor = [UIColor whiteColor];
@@ -138,8 +160,20 @@
 
 - (void) captureImageDidFinish:(UIImage *)image
 {
-    DrunkDetector *beer = [[DrunkDetector alloc] init];
-    NSLog(@"%@",[[beer calcDrunkess:image] description]);
+//    DrunkDetector *beer = [[DrunkDetector alloc] init];
+//    NSArray *items = [beer calcDrunkess:image];
+//    for (NSDictionary *item in items) {
+//        NSLog(@"%@",[item description]);
+//        UILabel *label = [[UILabel alloc] init];
+//        label.font = [UIFont systemFontOfSize:24];
+//        label.textColor = [UIColor whiteColor];
+//        label.backgroundColor = [UIColor colorWithWhite:0.0 alpha:60];
+//        label.text = [NSString stringWithFormat:@"LEVEL %@",[item valueForKey:@"level"]];
+//        
+//        CGRect rect = [[item valueForKey:@"bounds"] CGRectValue];
+//        image = [self pressImage:image composeImage:[self convertView:label]
+//                       x:rect.origin.x y:(rect.origin.y - rect.size.height)];
+//    }
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];

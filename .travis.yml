@@ -6,4 +6,4 @@ before_install:
 xcode_sdk: iphonesimulator
 xcode_project: drinky.xcworkspace
 xcode_scheme: drinky
-script: xctool -workspace ./ios/drinky.xcworkspace -scheme drinky -sdk iphonesimulator build test -freshInstall -freshSimulator
+script: xctool -workspace drinky.xcworkspace -scheme drinky -sdk iphonesimulator build test -freshInstall -freshSimulator

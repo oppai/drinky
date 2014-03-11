@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "DrunkDetector.h"
 
 @interface drinkyTests : XCTestCase
 
@@ -28,7 +29,8 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+	DrunkDetector *detector = [[DrunkDetector alloc] init];
+	XCTAssertNotNil(detector,"DrunkDetector allocate test");
 }
 
 @end

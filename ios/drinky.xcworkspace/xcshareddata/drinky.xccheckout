@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CBE7E1F7-CE00-45B6-9014-EC7F6769E024</string>
+	<string>EC1FCE7C-16C5-4DC9-8CDE-33E3C997BB57</string>
 	<key>IDESourceControlProjectName</key>
 	<string>drinky</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>85920ACF-E7D1-4388-BC2D-8B2E19CF6C8F</key>
-		<string>https://github.com/hurutoriya/drinky</string>
+		<key>7E807BC4-288D-46FD-9630-A89531BFE589</key>
+		<string>https://github.com/oppai/drinky</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ios/drinky.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>85920ACF-E7D1-4388-BC2D-8B2E19CF6C8F</key>
+		<key>7E807BC4-288D-46FD-9630-A89531BFE589</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/hurutoriya/drinky</string>
+	<string>https://github.com/oppai/drinky</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>85920ACF-E7D1-4388-BC2D-8B2E19CF6C8F</string>
+	<string>7E807BC4-288D-46FD-9630-A89531BFE589</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>85920ACF-E7D1-4388-BC2D-8B2E19CF6C8F</string>
+			<string>7E807BC4-288D-46FD-9630-A89531BFE589</string>
 			<key>IDESourceControlWCCName</key>
 			<string>drinky</string>
 		</dict>

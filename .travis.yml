@@ -2,7 +2,7 @@ language: objective-c
 before_install:
  - gem install cocoapods -r
  - pod setup
- - pod install
+ - cd ios && pod install
 xcode_sdk: iphonesimulator
 xcode_project: drinky.xcworkspace
 xcode_scheme: drinky
